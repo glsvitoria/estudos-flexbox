@@ -1,0 +1,142 @@
+@charset "UTF-8";
+
+/*Link com todos os comandos para flex-box: https://css-tricks.com/snippets/css/a-guide-to-flexbox/*/
+
+.cabecalhoPrincipal .container {
+    display: flex;
+    align-items: center; /*Alinhando vertical*/
+    justify-content: space-between; /*Colocando o espaço vazio entre eles*/
+}
+
+.cabecalhoPrincipal-nav {
+    display: flex;
+}
+
+.rodapePrincipal-patrocinadores .container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.rodapePrincipal-patrocinadores-list {
+    display: flex;
+    align-items: center;
+    justify-content: space-around; /*Espaço ao redor dos elementos*/
+    width: 70%; /*Para usar o space é preciso dar uma largura grande para que tenha espaço a ser usado*/
+    margin-right: 5%;
+}
+
+.rodapePrincipal-contatoForm {
+    width: 25%;
+}
+
+.rodapePrincipal-contatoForm-fieldset {
+    display: flex; /*Ao colocar o flex no pai, todos os filhos ficam com o mesmo tamanho*/
+}
+
+.rodapePrincipal-navMap-list {
+    display: flex;
+    flex-direction: column; /*A direção do flex, por padrão vem em row*/
+    flex-wrap: wrap; /*Ao chegar no limite do elemento pai, que é o height, ele quebra para a próxima coluna(ou linha, depende da direção*/
+    flex-flow: column wrap; /*Junção da função direction e wrap*/
+    height: 250px;
+}
+
+.conteudoPrincipal-cursos {
+    display: flex;
+    flex-wrap: wrap;
+    /*justify-content: space-between; Dessa forma a fila q tem apenas 2 itens o comando coloca todo espaço entre eles, não servindo*/
+}
+
+.conteudoPrincipal-cursos-link {
+    width: 23%;
+    margin: 1%;
+}
+
+.conteudoPrincipal-cursos-link:nth-child(4n) { /*Retirando de todos os elementos multíplos de 4(estão a direita)*/
+    margin-right: 0;
+}
+
+.conteudoPrincipal-cursos-link:nth-child(4n + 1) { /*Retirando de todos os elementos multíplos de 4 + 1(estão a esquerda)*/
+    margin-left: 0;
+}
+
+.videoSobre .container {
+    display: flex;
+    align-items: center;
+}
+
+.videoSobre-sobre {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 2; /*Divide a página na quantidade de flex somadas naquele elemento, e cada item tem a quantidade de flex do total determinado (Nesse exemplo temos 11 flex-grow, e o videoSobre-sobre vai ocupar 10*/
+}
+
+.videoSobre-sobre-list {
+    flex-grow: 1;
+}
+
+.videoSobre-video {
+    flex-grow: 1;
+    /*flex-shrink: 5;Quanto mais diminuiu o vídeo diminui 5 vezes mais q o Alurinha*/
+}
+
+@media screen and (max-width: 768px) {
+
+    body {
+        width: 100%;
+    }
+
+    .cabecalhoPrincipal .container {
+        flex-direction: column;
+        align-items: initial;/*Ao usar o flex direction: column, todos os comandos trocam o eixo, trocando de horizontal para vertical (main axis, cross axis)*/
+        text-align: center;
+    }
+
+    .cabecalhoPrincipal-nav {
+        flex-direction: column;
+    }
+
+    .conteudoPrincipal-cursos {
+        flex-direction: column;
+    }
+
+
+    .conteudoPrincipal-cursos-link {
+        width: 100%;
+    }
+
+    .rodapePrincipal-navMap-list {
+        height: auto;
+    }
+
+    .rodapePrincipal-patrocinadores .container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .rodapePrincipal-patrocinadores-list {
+        width: 100%;
+        margin: 0;
+    }
+
+    .rodapePrincipal-contatoForm {
+        width: 100%;
+    }
+
+    .rodapePrincipal-contatoForm-fieldset {
+        justify-content: center;
+    }
+
+    .cabecalhoPrincipal-nav-link-app {
+        order: -1; /*Comando para mudar a ordem do item de um elemento pai que seja flex (-1 é para o primeiro de todos e 1 para o último*/
+    }
+
+    .videoSobre .container {
+        flex-direction: column;
+    }
+
+    .videoSobre-video{
+        margin: 0 auto;
+    }
+}
